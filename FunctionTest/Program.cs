@@ -10,7 +10,7 @@ namespace FunctionTest
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("HelloWorl!");//1235415651
+            Console.WriteLine("HelloWorl!");
         }
     }
 }
