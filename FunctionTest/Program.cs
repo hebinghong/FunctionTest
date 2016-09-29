@@ -10,7 +10,8 @@ namespace FunctionTest
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("HelloWorl!");//
+            Console.WriteLine("HelloWorl!");
+            StringToTxt.StringToTxtFile("sfsdf");
         }
     }
 }
