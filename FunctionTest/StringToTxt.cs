@@ -13,10 +13,6 @@ namespace FunctionTest
         //输入输出流
         static FileStream fs;
         static StreamWriter sw;
-        /// <summary>
-        /// 将字符串输出到txt文件并保存在桌面
-        /// </summary>
-        /// <param name="str"></param>
         public static void StringToTxtFile(string str)
         {
             string txtName = DateTime.Now.ToString("yyyyMMddHHmmss");
