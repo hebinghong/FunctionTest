@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Net.Http;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace FunctionTest
 {
@@ -9,6 +11,7 @@ namespace FunctionTest
         {
             //PinYinToHanZi();
             //EmailService.SenEMail(args);
+            AsyncTest.Async(1);
             Console.ReadLine();
         }
         /// <summary>
