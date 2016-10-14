@@ -7,7 +7,8 @@ namespace FunctionTest
     {
         static void Main(string[] args)
         {
-            PinYinToHanZi();
+            //PinYinToHanZi();
+            //EmailService.SenEMail(args);
             Console.ReadLine();
         }
         /// <summary>
