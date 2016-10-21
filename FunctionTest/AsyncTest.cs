@@ -194,11 +194,15 @@ namespace FunctionTest
         /// <summary>
         /// 并行循环
         /// </summary>
-        public static void ParallelTest()
+        public static void Parallel_ForEcahTest()
         {
+            var sTime = DateTime.Now;
             var list = new List<string> {"a","b","c"};
+            int i = 0;
             Parallel.ForEach<string>(list, str =>
                 {
+                    i++;
+                    Console.WriteLine(i);
                     var sum = 0;
                     if (str.Contains("a"))
                     {
@@ -215,10 +219,40 @@ namespace FunctionTest
                     Console.WriteLine(str+":"+sum);
                 }
             );
-            //Parallel.For(0, 100, n => Console.WriteLine(n));
-            Console.WriteLine("线程创建成功");
-
+            var eTime = DateTime.Now;
+            var time = eTime - sTime;
+            Console.WriteLine("Parallel.ForEcah=>" + time);
         }
+
+        public static void Parallel_For()
+        {
+            var list = new List<string> { "a", "b", "c" };
+            var sTime = DateTime.Now;
+            Parallel.For(0, list.Count(), i =>
+                {
+                    Console.WriteLine(i);
+                     var str = list[i];
+                     var sum = 0;
+                     if (str.Contains("a"))
+                     {
+                         sum = Sum(10000);
+                     }
+                     if (str.Contains("b"))
+                     {
+                         sum = Sum(20000);
+                     }
+                     if (str.Contains("c"))
+                     {
+                         sum = Sum(30000);
+                     }
+                     Console.WriteLine(str + ":" + sum);
+                 }
+            );
+            var eTime = DateTime.Now;
+            var time = eTime-sTime;
+            Console.WriteLine("Parallel.For=>" + time);
+        }
+
         private static int Sum(Int32 i)
         {
             int sum = 0;
@@ -229,7 +263,7 @@ namespace FunctionTest
                     sum += i;
                 } //结果溢出，抛出异常
             }
-            Console.WriteLine(sum);
+            //Console.WriteLine(sum);
             return sum;
         }
 

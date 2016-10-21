@@ -10,26 +10,35 @@ namespace FunctionTest
         static  void Main(string[] args)
         {
             //以下被注释掉的方法都是可以运行的
-
-            // StringToTxt.StringToTxtFile("1234");
+            StrToTxt();
+            //StringToTxt.StringToTxtFile("1234");
             //PinYinToHanZi();
             //EmailService.SenEMail(args);
             //AsyncTest.Async();//0和无参表示异步
             // AsyncUrlRequest.AsyncUrlReq();
             //TaskTest.TaskContinueWith();
-            TaskTest.ParallelTest();
+            //TaskTest.Parallel_ForEcahTest();
+            //TaskTest.Parallel_For();
+
             Console.WriteLine("主线程代码运行结束。。。\n");
             Console.ReadKey();
         }
         /// <summary>
         /// 字符输出到txt文件
         /// </summary>
-        void StrToTxt()
+        static void StrToTxt()
         {
             StringBuilder sb = new StringBuilder();
+            var l = "{";
+            var r = "}";
             for (int i = 0; i < 32; i++)
             {
-                sb.AppendFormat("string var{0} = var{1}Index >= 0 ? dr[mydic[var{2}Index]].ToString() : \"\";", i, i, i);
+                sb.AppendFormat(
+                    "if (string.IsNullOrEmpty(var{0}))"+
+                "{1}"+
+                    "dr.SetColumnError(mydic[var{0}Index], errorNull);"+
+                "{2}"
+                    , i+1,l,r);
                 sb.AppendLine();
                 Console.WriteLine(sb.ToString());
             }
