@@ -9,8 +9,11 @@ namespace FunctionTest
     {
         static  void Main(string[] args)
         {
+            var t1 = DateTime.Now;
+            //Console.WriteLine($"start:{t1}");
+
             //以下被注释掉的方法都是可以运行的
-            StrToTxt();
+            //StrToTxt();
             //StringToTxt.StringToTxtFile("1234");
             //PinYinToHanZi();
             //EmailService.SenEMail(args);
@@ -20,7 +23,14 @@ namespace FunctionTest
             //TaskTest.Parallel_ForEcahTest();
             //TaskTest.Parallel_For();
 
-            Console.WriteLine("主线程代码运行结束。。。\n");
+            var res=StringTest.StringBuilder();
+
+            var t2 = DateTime.Now;
+            var t = t2 - t1;
+            //Console.WriteLine($"end:{t2}");
+            //Console.WriteLine($"time:{t}");
+            //StringToTxt.StringToTxtFile(t,"time");
+            //Console.WriteLine("主线程代码运行结束。。。\n");
             Console.ReadKey();
         }
         /// <summary>

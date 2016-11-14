@@ -13,35 +13,40 @@ namespace FunctionTest
         //输入输出流
         static FileStream fs;
         static StreamWriter sw;
+
         /// <summary>
         /// 将字符串输出到txt文件并保存在桌面
         /// </summary>
         /// <param name="str"></param>
-        public static void StringToTxtFile(string str)
+        /// <param name="txtName">文件名</param>
+        public static void StringToTxtFile(object str,string txtName = null)
         {
-            string txtName = DateTime.Now.ToString("yyyyMMddHHmmss");
+            if (txtName == null) txtName = DateTime.Now.ToString("yyyyMMddHHmmss");
             String path = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory)+"\\"+txtName+".txt";
-            fs = new FileStream(path, FileMode.Create,FileAccess.ReadWrite);
+            fs = new FileStream(path, FileMode.Append,FileAccess.Write);
             sw = new StreamWriter(fs);
-            sw.WriteLine(str);
+            sw.WriteLine(str.ToString());
             sw.Flush();
             sw.Close();
+            fs.Close();
+            sw.Dispose();
+            fs.Dispose();
         }
 
-        internal static void WriteLine(String str)
-        {
-            //开始写入
-            sw.WriteLine(str);
-            //清空缓冲区
-            sw.Flush();
-        }
-        internal static void Write(String str)
-        {
-            //开始写入
-            sw.Write(str);
-            //清空缓冲区
-            sw.Flush();
-        }
+        //internal static void WriteLine(String str)
+        //{
+        //    //开始写入
+        //    sw.WriteLine(str);
+        //    //清空缓冲区
+        //    sw.Flush();
+        //}
+        //internal static void Write(String str)
+        //{
+        //    //开始写入
+        //    sw.Write(str);
+        //    //清空缓冲区
+        //    sw.Flush();
+        //}
     }
 
 }
